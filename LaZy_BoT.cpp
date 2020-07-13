@@ -19,8 +19,8 @@ int main()
     if(chkdll(brain_tracker) == 0)
     {
         cout << "BOT BRAIN MISSING : getTime.dll\n";
-        cout << "Download it from : www.gitgub.com/tamimxb/AutoBot\n";
-        system("START www.github.com/tamimxb/Autobot");
+        cout << "Download it from : Github\n";
+        system("START https://github.com/tamimxb/LaZy_BoT/blob/master/getTime.dll");
         system("pause");
         system("exit");
     }
