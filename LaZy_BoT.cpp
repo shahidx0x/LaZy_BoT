@@ -4,6 +4,7 @@
 #include <string>
 #include <fstream>
 #include <sys/stat.h>
+#include <windows.h>
 inline bool chkdll (const std::string& filename)
 {
     struct stat buffer;
@@ -13,14 +14,16 @@ using namespace std;
 
 int main()
 {
-    // Debuging
+    //Debuging
     //system("START CMD");
     string brain_tracker =  "getTime.dll";
-    if(chkdll(brain_tracker) == 0)
+    string brain_tracher_sec = "getDay.dll";
+    if(chkdll(brain_tracker) == 0 && chkdll(brain_tracher_sec) == 0)
     {
         cout << "BOT BRAIN MISSING : getTime.dll\n";
-        cout << "Download it from : Github\n";
-        system("START https://github.com/tamimxb/LaZy_BoT/blob/master/getTime.dll");
+        cout << "Download it from : www.gitgub.com/tamimxb/AutoBot\n";
+        system("timeout 3 > nul");
+        system("START www.github.com/tamimxb/Autobot");
         system("pause");
         system("exit");
     }
@@ -29,7 +32,6 @@ int main()
         system("TITLE LaZy_BoT");
         system("date /t");
         system("pause");
-        // Setting Up External Executable
         system("cls");
         cout<< "[*]Starting System\n";
         system("timeout 3 > nul");
@@ -47,7 +49,7 @@ int main()
         }
         system("timeout 2 > nul ");
         // Fixing Your Local Computer Time if not
-        cout <<"[*]Fixing Local Machine Time\n\n\n";
+        cout <<"[*]Fixing Local Machine Time\n";
         system("timeout 2 > nul ");
         system("net stop w32time > nul");
         system("net start w32time > nul");
@@ -55,58 +57,81 @@ int main()
         system("w32tm /config /update > nul");
         cout <<"[*]Time Should Fixed\n";
         // Checking Date and Time For The Class
-        //x:
-        system("REN getTime.dll get.bat");
-        cout <<"[*]Checking Class Time\n";
-        system("get.bat > fetched.day");
-        system("REN get.bat getTime.dll");
 x:
-        cout <<"[*]Minimize The Window,It will Open the class automatically.\n";
-        ifstream fin( "fetched.day" );
+        cout <<"[*]Checking Class Time.\n";
+        // Setting Up External Executable
+        system("REN getDay.dll getDay.bat");
+        system("getDay.bat > day.conf");
+        system("REN getDay.bat getDay.dll");
+        cout <<"[*]Checking Class Time\n";
+        system("REN getTime.dll getTime.bat");
+        system("getTime.bat > time.conf");
+        system("REN getTime.bat getTime.dll");
+        ifstream fin( "day.conf" );
         string line;
         while( getline( fin, line ) )
         {
-            if(line.find( "Monday10:00" ) != string::npos || line.find( "Wednesday10:00" ) != string::npos)
+            if(line.find( "Monday" ) != string::npos || line.find( "Wednesday" ) != string::npos)
             {
-                system("START https://bdren.zoom.us/wc/68271724462/join?track_id=&jmf_code=&meeting_result=&tk=&cap=undefined&prefer=0");
-                system("timeout 10 > nul"); //Duration of the class
-                system("taskkill /IM msedge.exe /F > nul"); // Closing Browser
-                system("taskkill /IM firefox.exe /F > nul"); // Closing Browser
-                system("taskkill /IM chrome.exe /F > nul"); // Closing Browser
-            }
-            else
-            {
-                cout << "CLASS 1 : ERROR\n";
-            }
-            if( line.find( "Monday11:30" ) != string::npos || line.find( "Wednesday11:30" ) != string::npos )
-            {
-                system("start https://bdren.zoom.us/wc/68969938609/join?track_id=&jmf_code=&meeting_result=&tk=&cap=undefined&prefer=0");
-                system("timeout 10 > nul");
-                system("taskkill /IM msedge.exe /F > nul");
-                system("taskkill /IM firefox.exe /F > nul"); // Closing Browser
-                system("taskkill /IM chrome.exe /F > nul"); // Closing Browser
-            }
-            else
-            {
-                cout << "CLASS 2 : ERROR\n";
-            }
-            if( line.find( "Tuesday11:30" ) != string::npos || line.find( "Thursday11:30" ) != string::npos )
-            {
-                system("START https://bdren.zoom.us/wc/61814360358/join?track_id=&jmf_code=&meeting_result=&tk=&cap=undefined&prefer=0");
-                system("timeout 10 > nul");
-                system("taskkill /IM msedge.exe /F > nul");
-                system("taskkill /IM firefox.exe /F > nul"); // Closing Browser
-                system("taskkill /IM chrome.exe /F > nul"); // Closing Browser
-            }
-            else
-            {
-                cout << "CLASS 3 : ERROR\n";
-            }
 
-            //else
-            //{
-            //cout << "[*]Class Not Found";
-            // }
+                ifstream fin( "time.conf" );
+                string line;
+                while( getline( fin, line ) )
+                {
+                    if(line.find( "10:00" ) != string::npos )
+                    {
+                        system("START https://bdren.zoom.us/wc/68271724462/join?track_id=&jmf_code=&meeting_result=&tk=&cap=undefined&prefer=0");
+                        system("timeout 10 > nul"); //Duration of the class
+                        system("taskkill /IM msedge.exe /F > nul"); // Closing Browser
+                        system("taskkill /IM firefox.exe /F > nul"); // Closing Browser
+                        system("taskkill /IM chrome.exe /F > nul"); // Closing Browser
+                    }
+                    else if(line.find( "11:30" ) != string::npos )
+                    {
+                        system("start https://bdren.zoom.us/wc/68969938609/join?track_id=&jmf_code=&meeting_result=&tk=&cap=undefined&prefer=0");
+                        system("timeout 10 > nul");
+                        system("taskkill /IM msedge.exe /F > nul");
+                        system("taskkill /IM firefox.exe /F > nul"); // Closing Browser
+                        system("taskkill /IM chrome.exe /F > nul"); // Closing Browser
+                    }
+                    else
+                    {
+                        system("timeout 5 > nul");
+                        cout << "[*]CLASS : 1 & 2 will be start at 10:00 & 11:30AM\n";
+                    }
+                }
+            }
+            else
+            {
+                system("timeout 3 > nul");
+                cout <<"[*]Class 1 & 2 not Today\n";
+            }
+            if( line.find( "Tuesday" ) != string::npos || line.find( "Thursday" ) != string::npos )
+            {
+                ifstream fin( "time.conf" );
+                string line;
+                while( getline( fin, line ) )
+                {
+                    if(line.find( "19:11" ) != string::npos )
+                    {
+                        system("START https://bdren.zoom.us/wc/61814360358/join?track_id=&jmf_code=&meeting_result=&tk=&cap=undefined&prefer=0");
+                        system("timeout 10 > nul");
+                        system("taskkill /IM msedge.exe /F > nul");
+                        system("taskkill /IM firefox.exe /F > nul"); // Closing Browser
+                        system("taskkill /IM chrome.exe /F > nul"); // Closing Browser
+                    }
+                    else
+                    {
+                        cout << "[*]CLASS 3 : Not Started at Yet.\n";
+                        system("timeout 5 > nul");
+                    }
+                }
+            }
+            else
+            {
+                system("timeout 3 > nul");
+                cout << "[*]CLASS 3 : is not Today.\n";
+            }
             system("cls");
             goto x;
 
