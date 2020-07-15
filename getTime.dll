@@ -1,3 +1,2 @@
 @echo off
-for /f %%i in ('powershell ^(get-date^).DayOfWeek') do set dow=%%i
-echo %dow%%time:~-12,5%
+echo %time:~-12,5%

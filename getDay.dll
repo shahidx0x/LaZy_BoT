@@ -1,0 +1,3 @@
+@echo off
+for /f %%i in ('powershell ^(get-date^).DayOfWeek') do set dow=%%i
+echo %dow%
